@@ -16,6 +16,8 @@ class UserService {
   }
 
   static async createUser(idAccount, username, idRole) {
+    idAccount = parseInt(idAccount);
+    idRole = parseInt(idRole);
     return await UserEtt.create({
       idAccount: idAccount,
       username: username,

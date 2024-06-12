@@ -59,8 +59,8 @@ AccEtt.init(
         fields: ["email"],
       },
     ],
-    createdAt: true,
-    updatedAt: true,
+    createdAt: false,
+    updatedAt: false,
   }
 );
 

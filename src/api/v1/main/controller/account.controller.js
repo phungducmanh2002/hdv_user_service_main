@@ -41,15 +41,16 @@ class AccountController {
 
   static createUser = [
     async (req, res, next) => {
-      const idAccount = req.params.idAccount;
-      const { username, idRole } = req.body;
-      if (!idAccount || !username || !idRole) {
-        throw RES.BadRequest.setMessage("provide request data!");
-      }
       try {
+        const idAccount = parseInt(req.params.idAccount);
+        const { username, idRole } = req.body;
+        if (!idAccount || !username || !idRole) {
+          throw RES.BadRequest.setMessage("provide request data!");
+        }
         const user = await UserService.createUser(idAccount, username, idRole);
         res.json(RES.Oke.setData(user));
       } catch (error) {
+        // console.log(error);
         next(error);
       }
     },

@@ -25,6 +25,8 @@ RoleEtt.init(
         fields: ["name"],
       },
     ],
+    createdAt: false,
+    updatedAt: false,
   }
 );
 

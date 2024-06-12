@@ -34,6 +34,8 @@ UserEtt.init(
         fields: ["username"],
       },
     ],
+    createdAt: false,
+    updatedAt: false,
   }
 );
 

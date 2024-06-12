@@ -13,32 +13,32 @@ services:
       MYSQL_USER: sa
       MYSQL_PASSWORD: 1
       MYSQL_DATABASE: db_user
-    # ports:
-    #   - "3306:3306"
+    ports:
+      - "3306:3306"
     volumes:
       - user-mysql-data:/var/lib/mysql
 
-  user_service:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: user_service
-    depends_on:
-      - user_db
-    ports:
-      - "3000:3000"
-    networks:
-      - hdv_network
-    environment:
-      IP: user_service
-      PORT: 3000
-      DB_IP: user_db
-      DB_PORT: 3306
-      DB_DIALECT: mysql
-      DB_NAME: db_user
-      DB_USER: sa
-      DB_PASS: 1
-      DB_GEN: 1
+  # user_service:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   container_name: user_service
+  #   depends_on:
+  #     - user_db
+  #   ports:
+  #     - "3000:3000"
+  #   networks:
+  #     - hdv_network
+  #   environment:
+  #     IP: user_service
+  #     PORT: 3000
+  #     DB_IP: user_db
+  #     DB_PORT: 3306
+  #     DB_DIALECT: mysql
+  #     DB_NAME: db_user
+  #     DB_USER: sa
+  #     DB_PASS: 1
+  #     DB_GEN: 1
 
 networks:
   hdv_network:

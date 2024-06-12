@@ -27,7 +27,7 @@ class UserController {
   static getAccount = [
     async (req, res, next) => {
       try {
-        const idUser = req.params.idUser;
+        const idUser = parseInt(req.params.idUser);
         const acc = await AccService.getAccByUser(idUser);
         res.json(RES.Oke.setData(acc));
       } catch (error) {

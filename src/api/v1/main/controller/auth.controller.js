@@ -38,10 +38,12 @@ class AuthController {
           throw RES.BadRequest.setMessage("invalid password");
         }
         const user = (await UserService.getUsersByIdAccount(acc.id, idRole))[0];
+
         if (!user) {
-          throw RES.NotFound.setMessage("user not found");
+          throw RES.NotFound.setMessage("user not found").setData(acc);
         }
-        const token = DataHelper.genToken(user);
+        const userDto = user.get({ plain: true });
+        const token = DataHelper.genToken(userDto);
         res.json(RES.Oke.setData(token));
       } catch (error) {
         next(error);
